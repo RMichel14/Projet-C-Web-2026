@@ -1,6 +1,25 @@
 #include "calculs_trajectoire.h"
 #include "lecture_ecriture.h"
 
+void initialiserTrajectoirePlanete(planete *pl) {
+
+    // Premier point de la trajectoire
+    pl->trajectoire.point.r.x = pl->perihelie;
+    pl->trajectoire.point.r.y = 0.0;
+    pl->trajectoire.point.r.z = 0.0;
+
+    // Vitesse perpendiculaire au rayon
+    pl->trajectoire.point.v.x = 0.0;
+    pl->trajectoire.point.v.y = pl->vitesseInitiale;
+    pl->trajectoire.point.v.z = 0.0;
+
+    // Temps initial
+    pl->trajectoire.point.temps = 0;
+
+    // Pas encore de point suivant
+    pl->trajectoire.nextpoint = NULL;
+};
+
 
 /**********************************************
  ******************* Tests ********************
