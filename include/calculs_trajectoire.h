@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define NB_PLANETES 5
+#define NB_PLANETES 8
 
 
 /**********************************************
