@@ -16,18 +16,20 @@ void lectureDonneesInitialesPlanetes(char *nomDuFichier, planete *listePlanetes)
     while (count < NB_PLANETES && getline(&line, &len, monFichier) != -1) {
 
         // Stockage temporaire des informations d'une planète
-        char name[100];
-        double masse;
-        double perihelie;
+        char name[100]         = {0};
+        double masse           = 0;
+        double perihelie       = 0;
+        double vitesseInitiale = 0;
 
-        if (sscanf(line, "%99s %le %le", name, &masse, &perihelie) == 3) {  // l'utilisation de %99s est pour éviter un dépassement dans le tableau 'name' de 100 caractères
+        if (sscanf(line, "%99s %le %le %le", name, &masse, &perihelie, &vitesseInitiale) == 4) {  // l'utilisation de %99s est pour éviter un dépassement dans le tableau 'name' de 100 caractères
             listePlanetes[count].nom = malloc(strlen(name) + 1);
 
             if (listePlanetes[count].nom != NULL) {
                 strcpy(listePlanetes[count].nom, name); // copie du tableau du nom de la planète dans la structure planete
 
-                listePlanetes[count].masse = masse;
-                listePlanetes[count].perihelie = perihelie;
+                listePlanetes[count].masse           = masse;
+                listePlanetes[count].perihelie       = perihelie;
+                listePlanetes[count].vitesseInitiale = vitesseInitiale;
 
                 count++;
             }
