@@ -53,6 +53,12 @@ void planeteTest(planete *listePlanetes) {
         if (listePlanetes[i].nom != NULL)
             printf("%s :\nMasse : %le\nPérihélie : %le\nVitesse initiale : %le\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie, listePlanetes[i].vitesseInitiale);
 
+    // libération de la mémoire
+    for (int i = 0; i < NB_PLANETES; i++)
+        free(listePlanetes[i].nom);
+}
+
+void vectorTest() {
     /*********************************************
      ** Séquence de tests sur les mathématiques **
      *********************************************/
@@ -85,6 +91,4 @@ void planeteTest(planete *listePlanetes) {
     free(add);
     free(sous);
     free(multipli);
-    for (int i = 0; i < NB_PLANETES; i++)
-        free(listePlanetes[i].nom);
 }
