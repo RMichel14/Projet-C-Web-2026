@@ -6,5 +6,5 @@ void planeteTest(planete *listePlanetes) {
 
     for (int i = 0; i < NB_PLANETES; i++)
         if (listePlanetes[i].nom != NULL)
-            printf("%s :\nMasse : %f\nPérihélie : %f\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie);
+            printf("%s :\nMasse : %le\nPérihélie : %le\nVitesse initiale : %le\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie, listePlanetes[i].vitesseInitiale);
 }
