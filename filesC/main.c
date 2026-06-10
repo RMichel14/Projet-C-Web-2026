@@ -1,4 +1,5 @@
 #include "calculs_trajectoire.h"
+#include "vecteurs.h"
 
 
 // Corps du programme
@@ -9,6 +10,6 @@ int main() {
     printf("Hello world!\n");
     planeteTest(listePlanetes);
     vectorTest();
-    
+
     return EXIT_SUCCESS;
 }
