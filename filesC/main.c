@@ -8,6 +8,7 @@ int main() {
     // Tests unitaires
     printf("Hello world!\n");
     planeteTest(listePlanetes);
-
+    vectorTest();
+    
     return EXIT_SUCCESS;
 }
