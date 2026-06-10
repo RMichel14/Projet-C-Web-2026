@@ -1,0 +1,9 @@
+#include "calculs_trajectoire.h"
+#include "lecture_ecriture.h"
+
+void planeteTest(planete *listePlanetes) {
+    lectureDonneesInitialesPlanetes("data/donnees_initiales_planetes.txt", listePlanetes);
+
+    for (int i = 0; i < NB_PLANETES; i++)
+        (listePlanetes[i].nom != NULL) ? printf("%s :\nMasse : %f\nPérihélie : %f\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie) : NULL;
+}
