@@ -28,8 +28,8 @@ void lectureDonneesInitialesPlanetes(char *nomDuFichier, planete *listePlanetes)
                 strcpy(listePlanetes[count].nom, name); // copie du tableau du nom de la planète dans la structure planete
 
                 listePlanetes[count].masse           = masse;
-                listePlanetes[count].perihelie       = perihelie;
-                listePlanetes[count].vitesseInitiale = vitesseInitiale;
+                listePlanetes[count].perihelie       = perihelie * 1000.0;    // km -> m
+                listePlanetes[count].vitesseInitiale = vitesseInitiale / 3.6; // km/h -> m/s
 
                 count++;
             }
