@@ -7,7 +7,7 @@ OBJDIR = dependencies
 INCDIR = include
 
 CXXFLAGS = -Wall -W -pedantic -I$(INCDIR)
-LDFLAGS =
+LDFLAGS = -lm
 
 SRC = $(wildcard $(SRCDIR)/*.$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%.$(EXT)=$(OBJDIR)/%.o)
