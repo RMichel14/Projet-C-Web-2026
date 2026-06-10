@@ -3,7 +3,7 @@
 
 // Corps du programme
 int main() {
-    planete listePlanetes[NB_PLANETES];
+    planete listePlanetes[NB_PLANETES] = {0};
     
     // Tests unitaires
     printf("Hello world!\n");
