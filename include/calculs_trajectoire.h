@@ -71,4 +71,12 @@ void initialiserTrajectoirePlanete(planete *pl);
  */
 vector calculerAcceleration(vector position);
 
+/**
+ * Calcul du point suivant selon la méthode d'Euler
+ * @param courant point actuel | type : point
+ * @param deltaT équart en temps entre le point actuel (courant) et le point à calculer | type : double
+ * @return structure de type point
+ */
+point calculerPointSuivantEuler(point courant, double deltaT);
+
 #endif
