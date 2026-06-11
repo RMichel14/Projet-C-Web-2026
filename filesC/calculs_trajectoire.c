@@ -97,6 +97,23 @@ void planeteTest(planete *listePlanetes) {
     printf("%e\n", acceleration.y);
     printf("%e\n", acceleration.z);
     free(vect);
+
+    // Test calcul du prochain point selon la méthode d'Euler
+    // planete terre = listePlanetes[0]; // déjà fait dans l'accélération
+
+    terre.trajectoire.tabPoint[0] = terre.trajectoire.point;
+    // printf("test: %e", terre.trajectoire.point.v.z);
+
+    /**
+     * on démarre i = 1 car on calcul le point suivant en se servant du point i-1 (et donc égal à 0) pour le calcul
+     */
+    for(int i = 1; i < NB_POINTS; i++)
+        terre.trajectoire.tabPoint[i] = calculerPointSuivantEuler(terre.trajectoire.tabPoint[i - 1], DELTA_T);
+    
+    // affichage de tous les points
+    for (int i = 0; i < 20; i++)
+        printf("[%d]:\nPosition: [%e, %e, %e]\nVitesse:  [%e, %e, %e]\nTemps:    %d\n\n", i, terre.trajectoire.tabPoint[i].r.x, terre.trajectoire.tabPoint[i].r.y, terre.trajectoire.tabPoint[i].r.z, terre.trajectoire.tabPoint[i].v.x, terre.trajectoire.tabPoint[i].v.y, terre.trajectoire.tabPoint[i].v.z, terre.trajectoire.tabPoint[i].temps);
+    
     // libération de la mémoire
     // for (int i = 0; i < NB_PLANETES; i++)
     //     free(listePlanetes[i].nom);

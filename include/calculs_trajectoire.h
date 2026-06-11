@@ -29,6 +29,7 @@ typedef struct _point {
 // Structure trajectoire
 typedef struct _trajectoire {
     point point;
+    point tabPoint[NB_POINTS];
     struct _trajectoire *nextpoint;
 } trajectoire;
 
