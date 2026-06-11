@@ -13,7 +13,8 @@ int main() {
     // initialisation des planetes
     initialiserTrajectoirePlanetes(listePlanetes);
 
-
+    // calcul des points selon la méthode d'Euler
+    calculerTousLesPointsEuler(listePlanetes);
 
     // Tests unitaires
     printf("Hello world!\n");
@@ -21,7 +22,9 @@ int main() {
     // vectorTest();
 
     // libération de la mémoire
-    for (int i = 0; i < NB_PLANETES; i++)
+    for (int i = 0; i < NB_PLANETES; i++) {
+        libererTrajectoire(&listePlanetes[i].trajectoire);
         free(listePlanetes[i].nom);
+    }
     return EXIT_SUCCESS;
 }
