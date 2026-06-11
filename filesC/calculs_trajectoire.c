@@ -54,6 +54,27 @@ vector calculerAcceleration(vector position) {
     return acceleration;
 }
 
+point calculerPointSuivantEuler(point courant, double deltaT) {
+    point suivant;
+
+    // accélération au temps n
+    vector acceleration = calculerAcceleration(courant.r);
+
+    // position au temps n+1
+    suivant.r.x = courant.r.x + courant.v.x * deltaT;
+    suivant.r.y = courant.r.y + courant.v.y * deltaT;
+    suivant.r.z = courant.r.z + courant.v.z * deltaT;
+
+    // vitesse au temps n+1
+    suivant.v.x = courant.v.x + acceleration.x * deltaT;
+    suivant.v.y = courant.v.y + acceleration.y * deltaT;
+    suivant.v.z = courant.v.z + acceleration.z * deltaT;
+
+    // temps
+    suivant.temps = courant.temps + 1;
+
+    return suivant;
+}
 /**********************************************
  ******************* Tests ********************
  **********************************************/
