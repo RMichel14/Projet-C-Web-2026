@@ -75,13 +75,63 @@ point calculerPointSuivantEuler(point courant, double deltaT) {
 
     return suivant;
 }
+
+/**
+ * Fonction récursive qui appelle calculerPointSuivantEuler() autant de fois que le nombre de points
+ * @param trajDepart pointeur vers la trajectoire depuis laquelle on fait les calculs | type : trajectoire *
+ * @param stop compteur pour s'arrêter au nombre de point voulu | type : double
+ */
+void calculerTousLesPointsEulerPlanete(trajectoire *trajDepart, int stop) {
+    // cas de base
+    if (stop >= NB_POINTS) {
+        trajDepart->nextpoint = NULL;
+        return;
+    }
+
+    // allocation d'une zone mémoire pour la prochaine trajectoire
+    trajDepart->nextpoint = malloc(sizeof(trajectoire));
+
+    // en cas d'erreur d'allocation mémoire
+    if (trajDepart->nextpoint == NULL) {
+        fprintf(stderr, "Erreur allocation mémoire\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // définition du prochain point au sein de la structure trajectoire suivante
+    trajDepart->nextpoint->point = calculerPointSuivantEuler(trajDepart->point, DELTA_T);
+
+    calculerTousLesPointsEulerPlanete(trajDepart->nextpoint, stop + 1);
+}
+
+void calculerTousLesPointsEuler(planete *listePlanetes) {
+    for (int i = 0; i < NB_PLANETES; i++)
+        calculerTousLesPointsEulerPlanete(&listePlanetes[i].trajectoire, 1);
+}
+
+void affichageDesPointsEulerCode(trajectoire *trajDepart, int stop) {
+    // cas de base
+    if (trajDepart == NULL || stop >= NB_POINTS)
+        return;
+
+    printf("[%d]:\nPosition: [%e, %e, %e]\nVitesse:  [%e, %e, %e]\nTemps:    %d\n\n",
+        stop,
+        trajDepart->point.r.x, trajDepart->point.r.y, trajDepart->point.r.z,
+        trajDepart->point.v.x, trajDepart->point.v.y, trajDepart->point.v.z,
+        trajDepart->point.temps
+    );
+    affichageDesPointsEulerCode(trajDepart->nextpoint, stop + 1);
+}
+
+void affichageDesPointsEuler(planete *pl) {
+    affichageDesPointsEulerCode(&pl->trajectoire, 0);
+}
+
+
 /**********************************************
  ******************* Tests ********************
  **********************************************/
 
 void planeteTest(planete *listePlanetes) {
-    // lectureDonneesInitialesPlanetes("data/donnees_initiales_planetes.txt", listePlanetes);
-
     // Test affichage
     for (int i = 0; i < NB_PLANETES; i++)
         if (listePlanetes[i].nom != NULL)
@@ -98,23 +148,10 @@ void planeteTest(planete *listePlanetes) {
     printf("%e\n", acceleration.z);
     free(vect);
 
-    // Test calcul du prochain point selon la méthode d'Euler
-    // planete terre = listePlanetes[0]; // déjà fait dans l'accélération
+    // Test calcul des points selon la méthode d'Euler
+    calculerTousLesPointsEuler(listePlanetes);
 
-    terre.trajectoire.tabPoint[0] = terre.trajectoire.point;
-    // printf("test: %e", terre.trajectoire.point.v.z);
 
-    /**
-     * on démarre i = 1 car on calcul le point suivant en se servant du point i-1 (et donc égal à 0) pour le calcul
-     */
-    for(int i = 1; i < NB_POINTS; i++)
-        terre.trajectoire.tabPoint[i] = calculerPointSuivantEuler(terre.trajectoire.tabPoint[i - 1], DELTA_T);
-    
     // affichage de tous les points
-    for (int i = 0; i < 20; i++)
-        printf("[%d]:\nPosition: [%e, %e, %e]\nVitesse:  [%e, %e, %e]\nTemps:    %d\n\n", i, terre.trajectoire.tabPoint[i].r.x, terre.trajectoire.tabPoint[i].r.y, terre.trajectoire.tabPoint[i].r.z, terre.trajectoire.tabPoint[i].v.x, terre.trajectoire.tabPoint[i].v.y, terre.trajectoire.tabPoint[i].v.z, terre.trajectoire.tabPoint[i].temps);
-    
-    // libération de la mémoire
-    // for (int i = 0; i < NB_PLANETES; i++)
-    //     free(listePlanetes[i].nom);
+    affichageDesPointsEuler(&(listePlanetes[0])); // Affichage pour la planète Terre
 }

@@ -80,4 +80,16 @@ vector calculerAcceleration(vector position);
  */
 point calculerPointSuivantEuler(point courant, double deltaT);
 
+/**
+ * Permet de calculer tous les points de trajectoire des planètes selon la méthode d'Euler
+ * @param listePlanetes pointeur vers la liste des planètes
+ */
+void calculerTousLesPointsEuler(planete *listePlanetes);
+
+/**
+ * Affichage de tous les points d'une planète selon la méthode d'Euler
+ * @param listePlanete pointeur vers la liste des planètes | type : planete
+ */
+void affichageDesPointsEuler(planete *pl);
+
 #endif
