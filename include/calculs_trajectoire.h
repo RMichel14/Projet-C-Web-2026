@@ -7,7 +7,12 @@
 
 #include "vecteurs.h"
 
-#define NB_PLANETES 8
+#define NB_PLANETES 8 // Nombre de planètes
+#define G 6.67408e-11 // Constante gravitationnelle
+#define MASSE_SOLEIL 1.9885e30
+
+#define DELTA_T 3600.0 // temps en secondes / 1 heure = 3600 secondes
+#define NB_POINTS 8760 // 365 jours x 24 heures = 8760 points
 
 
 /**********************************************
@@ -59,5 +64,11 @@ void initialiserTrajectoirePlanetes(planete *listePlanetes);
  */
 void initialiserTrajectoirePlanete(planete *pl);
 
+/**
+ * Calcul l'accélération d'une planète.
+ * @param position vecteur position de la planète | type : vector
+ * @return vector
+ */
+vector calculerAcceleration(vector position);
 
 #endif
