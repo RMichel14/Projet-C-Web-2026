@@ -48,7 +48,13 @@ typedef struct _planete {
 void planeteTest(planete *listePlanetes);
 
 /**
- * Initialisation trajectoire d'une planète.
+ * Initialisation trajectoire des planètes.
+ * @param listePlanetes pointeur vers la liste des planètes.
+ */
+void initialiserTrajectoirePlanetes(planete *listePlanetes);
+
+/**
+ * Initialisation trajectoire d'UNE planète.
  * @param pl pointeur vers une planète.
  */
 void initialiserTrajectoirePlanete(planete *pl);
