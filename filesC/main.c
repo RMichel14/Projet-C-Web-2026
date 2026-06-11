@@ -7,11 +7,11 @@
 int main() {
     planete listePlanetes[NB_PLANETES] = {0};
 
-    // lecture des données des planètes
+    // lecture des données initiales des planètes
     lectureDonneesInitialesPlanetes("data/donnees_initiales_planetes.txt", listePlanetes);
-    
-    for(int i = 0; i < NB_PLANETES; i++)
-        initialiserTrajectoirePlanete(&listePlanetes[i]);
+
+    // initialisation des planetes
+    initialiserTrajectoirePlanetes(listePlanetes);
 
 
 

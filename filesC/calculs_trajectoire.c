@@ -59,8 +59,9 @@ vector calculerAcceleration(vector position) {
  **********************************************/
 
 void planeteTest(planete *listePlanetes) {
-    lectureDonneesInitialesPlanetes("data/donnees_initiales_planetes.txt", listePlanetes);
+    // lectureDonneesInitialesPlanetes("data/donnees_initiales_planetes.txt", listePlanetes);
 
+    // Test affichage
     for (int i = 0; i < NB_PLANETES; i++)
         if (listePlanetes[i].nom != NULL)
             printf("%s :\nMasse : %le\nPérihélie : %le\nVitesse initiale : %le\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie, listePlanetes[i].vitesseInitiale);
@@ -76,6 +77,6 @@ void planeteTest(planete *listePlanetes) {
     printf("%e\n", acceleration.z);
     free(vect);
     // libération de la mémoire
-    for (int i = 0; i < NB_PLANETES; i++)
-        free(listePlanetes[i].nom);
+    // for (int i = 0; i < NB_PLANETES; i++)
+    //     free(listePlanetes[i].nom);
 }
