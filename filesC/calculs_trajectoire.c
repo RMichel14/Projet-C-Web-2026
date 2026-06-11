@@ -65,6 +65,16 @@ void planeteTest(planete *listePlanetes) {
         if (listePlanetes[i].nom != NULL)
             printf("%s :\nMasse : %le\nPérihélie : %le\nVitesse initiale : %le\n\n", listePlanetes[i].nom, listePlanetes[i].masse, listePlanetes[i].perihelie, listePlanetes[i].vitesseInitiale);
 
+    // Test acceleration de la Terre
+    planete terre = listePlanetes[0];
+    vector *vect = nouveauVecteur(terre.perihelie, 0, 0);
+    vector acceleration = calculerAcceleration(*vect);
+
+    printf("Accélération :\n");
+    printf("%e\n", acceleration.x);
+    printf("%e\n", acceleration.y);
+    printf("%e\n", acceleration.z);
+    free(vect);
     // libération de la mémoire
     for (int i = 0; i < NB_PLANETES; i++)
         free(listePlanetes[i].nom);
