@@ -7,6 +7,10 @@
 
 #include "vecteurs.h"
 
+/**********************************************
+ ***************** Constantes *****************
+ **********************************************/
+
 #define NB_PLANETES 8 // Nombre de planètes
 #define G 6.67408e-11 // Constante gravitationnelle
 #define MASSE_SOLEIL 1.9885e30
@@ -19,21 +23,17 @@
  ***************** Structures *****************
  **********************************************/
 
-// Structure point
 typedef struct _point {
     vector r;  // position
     vector v;  // vitesse
     int temps;
 } point;
 
-// Structure trajectoire
 typedef struct _trajectoire {
     point point;
-    point tabPoint[NB_POINTS];
     struct _trajectoire *nextpoint;
 } trajectoire;
 
-// Structure planète
 typedef struct _planete {
     char *nom;
     double masse;

@@ -1,6 +1,11 @@
 #include "calculs_trajectoire.h"
 #include "lecture_ecriture.h"
 
+
+/**********************************************
+ ************** Initialisation ****************
+ **********************************************/
+
 void initialiserTrajectoirePlanete(planete *pl) {
 
     // Premier point de la trajectoire
@@ -24,6 +29,11 @@ void initialiserTrajectoirePlanetes(planete *listePlanetes) {
     for (int i = 0; i < NB_PLANETES; i++)
         initialiserTrajectoirePlanete(&listePlanetes[i]);
 }
+
+
+/**********************************************
+ *************** Accélération *****************
+ **********************************************/
 
 vector calculerAcceleration(vector position) {
     vector acceleration;
@@ -53,6 +63,11 @@ vector calculerAcceleration(vector position) {
 
     return acceleration;
 }
+
+
+/**********************************************
+ ********* Point suivant selon Euler **********
+ **********************************************/
 
 point calculerPointSuivantEuler(point courant, double deltaT) {
     point suivant;
