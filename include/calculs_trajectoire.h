@@ -92,4 +92,11 @@ void calculerTousLesPointsEuler(planete *listePlanetes);
  */
 void affichageDesPointsEuler(planete *pl);
 
+
+/**
+ * Fonction de libération de la mémoire des calculs de trajectoire
+ * @param traj pointeur vers une adresse mémoire contenant la trajectoire d'une planète | type : trajectoire *
+ */
+void libererTrajectoire(trajectoire *traj);
+
 #endif

@@ -141,6 +141,17 @@ void affichageDesPointsEuler(planete *pl) {
     affichageDesPointsEulerCode(&pl->trajectoire, 0);
 }
 
+void libererTrajectoire(trajectoire *traj) {
+    // cas de base
+    if (traj == NULL || traj->nextpoint == NULL)
+        return;
+
+    libererTrajectoire(traj->nextpoint);
+
+    free(traj->nextpoint);
+    traj->nextpoint = NULL;
+}
+
 
 /**********************************************
  ******************* Tests ********************
