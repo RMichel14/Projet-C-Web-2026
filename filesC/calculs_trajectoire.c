@@ -18,7 +18,12 @@ void initialiserTrajectoirePlanete(planete *pl) {
 
     // Pas encore de point suivant
     pl->trajectoire.nextpoint = NULL;
-};
+}
+
+void initialiserTrajectoirePlanetes(planete *listePlanetes) {
+    for (int i = 0; i < NB_PLANETES; i++)
+        initialiserTrajectoirePlanete(&listePlanetes[i]);
+}
 
 
 /**********************************************
