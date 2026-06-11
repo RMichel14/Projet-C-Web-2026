@@ -16,6 +16,9 @@ int main() {
     // calcul des points selon la méthode d'Euler
     calculerTousLesPointsEuler(listePlanetes);
 
+    // exporter les données
+    exporterJSON("data/data.json", listePlanetes);
+
     // Tests unitaires
     printf("Hello world!\n");
     // planeteTest(listePlanetes);
