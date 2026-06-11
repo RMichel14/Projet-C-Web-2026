@@ -25,6 +25,34 @@ void initialiserTrajectoirePlanetes(planete *listePlanetes) {
         initialiserTrajectoirePlanete(&listePlanetes[i]);
 }
 
+vector calculerAcceleration(vector position) {
+    vector acceleration;
+
+    double distance = norme(&position);
+
+    // Sécurité : éviter une division par zéro
+    if (distance == 0.0) {
+        acceleration.x = 0.0;
+        acceleration.y = 0.0;
+        acceleration.z = 0.0;
+
+        return acceleration;
+    }
+
+    /**
+     * Formule mathématiques : (-G x MASSE_SOLEIL) /
+     *                  (distance * distance * distance)
+     */
+    double coefficient =
+                (-G * MASSE_SOLEIL) /
+        (distance * distance * distance);
+
+    acceleration.x = coefficient * position.x;
+    acceleration.y = coefficient * position.y;
+    acceleration.z = coefficient * position.z;
+
+    return acceleration;
+}
 
 /**********************************************
  ******************* Tests ********************
