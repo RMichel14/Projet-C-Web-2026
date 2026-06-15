@@ -16,7 +16,7 @@
 #define MASSE_SOLEIL 1.9885e30
 
 #define DELTA_T 3600.0 // temps en secondes / 1 heure = 3600 secondes
-#define NB_POINTS 8760 // 365 jours x 24 heures = 8760 points
+#define NB_POINTS 365*24*2 // 365 jours x 24 heures x 2 ans
 
 
 /**********************************************
