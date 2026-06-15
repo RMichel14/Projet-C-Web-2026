@@ -17,10 +17,32 @@
     <header>
         <h1>Simulation des trajectoires planétaires</h1>
 
-        <p>Trajectoires calculées en C puis affichées avec P5.js</p>
+        <p>Trajectoires calculées en C selon la méthode de calcul d'Euler puis affichées avec la bibliothèque P5.js</p>
     </header>
 
     <main>
+        <div id="infos">
+            <h2>Informations</h2>
+
+            <p>Temps simulé : <span id="temps">0</span> h</p>
+            <p>Nombre de trajectoires : <span id="nbPlanetes">0</span></p>
+
+            <h2>Contrôles</h2>
+
+            <button id="pauseBtn">Pause</button>
+
+            <h3>Planètes affichées</h3>
+
+            <div id="planetFilters">
+                <!-- Cases générées automatiquement -->
+            </div>
+
+            <div class="filterButtons">
+                <button id="selectAllBtn">Tout sélectionner</button> 
+                <button id="clearAllBtn">Tout désélectionner</button>
+            </div>
+        </div>
+
         <div id="canvas-container"></div>
     </main>
 
