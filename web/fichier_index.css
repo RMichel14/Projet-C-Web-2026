@@ -18,6 +18,90 @@ h1 {
     margin-bottom: 10px;
 }
 
+
+/* Style du cadre "Informations" */
+#infos {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+
+    color: white;
+}
+
+
+/* Style du sélecteur de planètes */
+#planetFilters {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.planetCheckbox {
+    display: block;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.planetCheckbox input {
+    margin-right: 8px;
+}
+
+
+/* Style des différents boutons */
+.filterButtons {
+    margin-top: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filterButtons button {
+    background: rgba(30,30,40,0.9);
+    color: white;
+
+    border: 1px solid #4AA3FF;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.filterButtons button:hover {
+    background: rgba(74,163,255,0.25);
+}
+
+#pauseBtn {
+    background: rgba(30, 30, 40, 0.9);
+    color: white;
+
+    border: 1px solid #4AA3FF;
+    border-radius: 8px;
+    padding: 10px 18px;
+
+    font-size: 15px;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+#pauseBtn:hover {
+    background: rgba(74, 163, 255, 0.25);
+
+    box-shadow:
+        0 0 10px rgba(74, 163, 255, 0.5);
+}
+
+#pauseBtn:active {
+    transform: scale(0.96);
+}
+
+/* Style de la balise contenant le canva */
 #canvas-container {
     display: flex;
     justify-content: center;
